@@ -69,3 +69,4 @@ figures/client-server/out/
 figures/server-lookup/shots/
 figures/server-lookup/out/
 tests/console.mjs
+tests/hover.mjs

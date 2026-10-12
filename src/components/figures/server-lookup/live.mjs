@@ -108,11 +108,6 @@ export function mountServerLookup(root, meta) {
     place(0, 0, 0);
   }
 
-  const TOUR = [0, 1, 4, 3, 2];
-  let touring = !still.matches;
-  let step = 0;
-  let idle = 1.2;
-  let idleTimer = 0;
   let raf = 0;
   let previous = 0;
   let visible = false;
@@ -123,47 +118,29 @@ export function mountServerLookup(root, meta) {
     if (job) {
       job.t += dt;
       if (job.t >= MOVE + DOWN + UP + SEND) finish();
-    } else if (touring) {
-      idle -= dt;
-      if (idle <= 0) {
-        ask(TOUR[step], false);
-        step = (step + 1) % TOUR.length;
-        idle = 1.8;
-      }
     }
     frame();
-    raf = visible && (job || touring) ? requestAnimationFrame(tick) : 0;
+    raf = visible && job ? requestAnimationFrame(tick) : 0;
   }
   function run() {
+    if (still.matches) {
+      tick(performance.now());
+      return;
+    }
     if (!raf && visible) {
       previous = 0;
       raf = requestAnimationFrame(tick);
     }
   }
-  function takeOver() {
-    touring = false;
-    clearTimeout(idleTimer);
-    idleTimer = setTimeout(() => {
-      if (still.matches) return;
-      touring = true;
-      idle = 1;
-      run();
-    }, 12000);
-  }
-
   function onKey(event) {
     if (event.metaKey || event.ctrlKey || event.altKey) return;
     const i = ["1", "2", "3", "4", "5"].indexOf(event.key);
     if (i < 0) return;
     event.preventDefault();
-    takeOver();
     ask(i);
   }
   const handlers = buttons.map((el) => {
-    const handler = () => {
-      takeOver();
-      ask(Number(el.getAttribute("data-file-button")));
-    };
+    const handler = () => ask(Number(el.getAttribute("data-file-button")));
     el.addEventListener("click", handler);
     return handler;
   });
@@ -177,15 +154,15 @@ export function mountServerLookup(root, meta) {
   );
   observer.observe(svg);
 
-  show(FILES[0], null);
-  statusText.textContent = "Ready";
+  show("No file yet", null);
+  statusText.textContent = "Pick a file to ask for";
+  say("4 files stored");
   frame();
   root.dataset.ready = "true";
 
   return () => {
     delete root.dataset.ready;
     cancelAnimationFrame(raf);
-    clearTimeout(idleTimer);
     observer.disconnect();
     root.removeEventListener("keydown", onKey);
     buttons.forEach((el, i) => el.removeEventListener("click", handlers[i]));

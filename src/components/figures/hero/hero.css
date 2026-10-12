@@ -146,3 +146,14 @@
   @keyframes fe-focus { from { filter: blur(18px); opacity: 0; transform: scale(0.985); } }
 }
 .fe-switches-wrap { flex-wrap: wrap; }
+/* Figure keys: the pointed-at part stays, the rest steps back. */
+.fe-figure [data-key] { transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+.fe-figure[data-focus] [data-key] { opacity: 0.22; }
+.fe-figure[data-focus="server"] [data-key="server"],
+.fe-figure[data-focus="hub"] [data-key="hub"],
+.fe-figure[data-focus="cables"] [data-key="cables"],
+.fe-figure[data-focus="clients"] [data-key="clients"],
+.fe-figure[data-focus="cards"] [data-key="cards"],
+.fe-figure[data-focus="picker"] [data-key="picker"],
+.fe-figure[data-focus="out"] [data-key="out"],
+.fe-figure[data-focus="display"] [data-key="display"] { opacity: 1; }

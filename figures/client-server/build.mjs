@@ -264,7 +264,14 @@ const svg = k.figureSvg({
   height: HEIGHT,
   label:
     "A small network on a bench. A server cabinet with three file drawers stands at the back, cabled to a hub. Three clients, a phone, a tablet and a monitor, are cabled to the same hub. When a client asks for a page, a dot travels along its cable to the server, a drawer slides out, the files travel back, and the page appears on that client's screen.",
-  body: [plate(), rack(), hub(), cables(), ...byDepth(CLIENTS.map((c, i) => [c.body.x + c.body.w / 2, c.body.y, i])).map(([, , i]) => client(CLIENTS[i], i)), `<circle class="cs-pulse" data-pulse r="2.2" cx="0" cy="0" style="opacity:0"/>`],
+  body: [
+    plate(),
+    `<g data-key="server">${rack()}</g>`,
+    `<g data-key="hub">${hub()}</g>`,
+    `<g data-key="cables">${cables()}</g>`,
+    `<g data-key="clients">${byDepth(CLIENTS.map((c, i) => [c.body.x + c.body.w / 2, c.body.y, i])).map(([, , i]) => client(CLIENTS[i], i)).join("")}</g>`,
+    `<circle class="cs-pulse" data-pulse r="2.2" cx="0" cy="0" style="opacity:0"/>`,
+  ],
 });
 
 const unit = k.axisVector(P, [0, 1, 0]);
