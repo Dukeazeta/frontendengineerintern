@@ -26,7 +26,7 @@ export function ClientServerFigure() {
             <span className="iso-plate-corner" data-corner="title">Client and server</span>
             <span className="iso-plate-corner" data-corner="hint">Tap a device</span>
             <span className="iso-plate-corner" data-corner="readout" data-readout>
-              Pick a device to send a request
+              3 clients, 1 server
             </span>
           </div>
           <div

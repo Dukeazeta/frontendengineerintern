@@ -1,8 +1,5 @@
-import { Cite, Figure, InShort, MixUp, Note } from "@/components/lesson/blocks";
+import { Cite, Figure, Note } from "@/components/lesson/blocks";
 import { Quiz } from "@/components/lesson/quiz";
-import { Sort } from "@/components/lesson/sort";
-import { Steps } from "@/components/lesson/trip-steps";
-import { ThisPage } from "@/components/lesson/this-page";
 import { ClientServerFigure } from "@/components/figures/client-server/client-server-figure";
 import { ServerLookupFigure } from "@/components/figures/server-lookup/server-lookup-figure";
 
@@ -15,13 +12,9 @@ export const meta = {
   ],
 };
 
-You typed an address or tapped a link, and this page appeared. In the moment between, your device asked another computer for the page, and that computer sent it back. Your browser kept a record of the trip:
-
-<ThisPage />
-
 <Note term="Client">The device that asks for a web page, together with the program on it doing the asking.</Note>
 
-The computer at that address is a server. Your device, with the browser on it, is the client.<Cite n={1} /> Every page on the web reaches you this way.
+Two computers take part every time you open a web page. One asks for the page, and the other has it and sends it. The web calls the first a client and the second a server.<Cite n={1} />
 
 <Note term="Browser">The app you use to open web pages.</Note>
 
@@ -33,29 +26,11 @@ A server is a computer that stores a website’s files and sends a copy to any c
 
 ## One trip, start to finish
 
-Opening a page takes three steps. Press a step to watch it happen in Fig 1.1.
-
-<Steps
-  fig="1.1"
-  steps={[
-    "Your browser asks a server for the page.",
-    "The server finds the page’s files.",
-    "Copies of the files travel back, and your browser turns them into the page you see.",
-  ]}
-/>
+Opening a page takes three steps. Your browser asks a server for the page. The server finds the files and sends copies back. Your browser turns those files into the page you see.
 
 The asking is called a request, and the answer is called a response. Section 1.2 is about those two.
 
-<Figure
-  n="1.1"
-  caption="Three clients share one server through a hub. Pick a device to send a whole request, or use the steps above to go one step at a time."
-  keys={[
-    { key: "server", label: "Server", detail: "Stores the website’s files." },
-    { key: "hub", label: "Hub", detail: "Joins the cables so every device can reach the server. On the real internet, many networks sit in this spot." },
-    { key: "cables", label: "Cables", detail: "Carry requests out and responses back." },
-    { key: "clients", label: "Clients", detail: "The phone, tablet and monitor that ask for pages." },
-  ]}
->
+<Figure n="1.1" caption="Three clients share one server through a hub. Tap a device, or press 1, 2 or 3, to send a request and watch the files come back.">
   <ClientServerFigure />
 </Figure>
 
@@ -67,16 +42,7 @@ The server keeps its files after it answers, because it only ever sends copies. 
 
 Each request names the file the client wants. The server checks whether it has a file by that name. If it does, it sends a copy back. If it does not, it still answers, with an error message. The most common one is 404 Not Found.<Cite n={2} />
 
-<Figure
-  n="1.2"
-  caption="Inside the server. Pick a file to ask for. A card there means a copy goes out. An empty slot means 404 Not Found."
-  keys={[
-    { key: "cards", label: "File cards", detail: "The website’s files, one card each." },
-    { key: "picker", label: "Picker", detail: "Runs to the card that matches the request." },
-    { key: "out", label: "Out tray", detail: "Where the copy leaves for the client." },
-    { key: "display", label: "Display", detail: "Shows the file that was asked for and what happened." },
-  ]}
->
+<Figure n="1.2" caption="Inside the server. Ask for a file and the picker runs to its card. A card there means a copy goes out. An empty slot means the answer is 404 Not Found.">
   <ServerLookupFigure />
 </Figure>
 
@@ -85,23 +51,13 @@ Each request names the file the client wants. The server checks whether it has a
 - Most servers have no screen and stay switched on all day, so they can answer at any hour.<Cite n={2} />
 - Client and server are jobs, not kinds of machine. Later in this course you will run a small server on your own laptop, and the browser on that same laptop will be its client.
 
-<MixUp>
-A server and a website are different things. The website is the files. The server is the computer that holds them and hands out copies, and one server can hold many websites.<Cite n={2} />
-</MixUp>
-
-<InShort>
-- The client asks for a page, and most of the time the client is your browser.
-- The server stores a website’s files and sends copies to any client that asks.
-- Every request names a file. If the server has no such file, it answers 404 Not Found.
-</InShort>
-
 ## Exercises
 
 Answer from memory. Scrolling up first only makes it feel easier.
 
 <Quiz
   lesson="chapter-01/client-and-server"
-  done="All five right."
+  done="All five right. Section 1.1 is done."
   questions={[
     {
       id: "who-is-client",
@@ -128,14 +84,6 @@ Answer from memory. Scrolling up first only makes it feel easier.
       wrong: "The server always answers. When it has no such file, it sends an error: 404 Not Found.",
     },
     {
-      id: "same-laptop",
-      prompt: "You run a small server on your laptop and open its page in your laptop’s browser. Which one is the client?",
-      options: ["The server program on it", "The browser on your laptop", "Neither, it takes two computers"],
-      answer: 1,
-      right: "Right. The browser does the asking, so it is the client, even on the same machine.",
-      wrong: "Client and server are jobs. The browser asks, so it is the client, even though the server runs on the same laptop.",
-    },
-    {
       id: "always-on",
       prompt: "Why do most servers stay switched on all day?",
       options: ["So they can answer anytime", "So their screens stay bright", "So they can charge batteries"],
@@ -143,16 +91,13 @@ Answer from memory. Scrolling up first only makes it feel easier.
       right: "Right. A client can ask at any hour, so the server has to be ready.",
       wrong: "Most servers have no screen at all. They stay on so they can answer whenever a client asks.",
     },
-  ]}
-/>
-
-<Sort
-  prompt="Client or server? Sort each one."
-  groups={["Client", "Server"]}
-  items={[
-    { text: "Safari on your phone", answer: 0 },
-    { text: "The computer that stores a news site’s files", answer: 1 },
-    { text: "Chrome on a library computer", answer: 0 },
-    { text: "A machine that answers 404 Not Found", answer: 1 },
+    {
+      id: "laptop-server",
+      prompt: "Can your laptop be a server?",
+      options: ["No, servers are always special machines", "Only when nobody is using it", "Yes, if it runs server software"],
+      answer: 2,
+      right: "Right. Server is a job. Any computer running server software can do it.",
+      wrong: "Server is a job. Your laptop can do it with the right software.",
+    },
   ]}
 />
