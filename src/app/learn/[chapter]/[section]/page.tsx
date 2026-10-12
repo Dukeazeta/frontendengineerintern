@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { BackLink } from "@/components/site/back-link";
 import { Header } from "@/components/site/header";
 import { Reveal } from "@/components/site/reveal";
 import { chapterHref, findLesson, lessonHref, readyLessons, sectionNumber } from "@/content/course";
@@ -55,6 +56,7 @@ async function Section({ params }: { params: PageProps<"/learn/[chapter]/[sectio
           { label: `${sectionNumber(level, index)} ${mod.meta.title}`, href: lessonHref(level.slug, level.lessons[index].slug) },
         ]}
       />
+      <BackLink href={chapterHref(level.slug)} label={`Chapter ${level.number}`} />
       <main className={styles.page}>
         <header className={styles.head}>
           <p className={styles.number}>{sectionNumber(level, index)}</p>

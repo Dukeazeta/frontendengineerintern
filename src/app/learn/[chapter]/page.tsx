@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { BackLink } from "@/components/site/back-link";
 import { Header } from "@/components/site/header";
 import { Reveal } from "@/components/site/reveal";
 import { getLevel, lessonHref, levels, sectionNumber } from "@/content/course";
@@ -40,6 +41,7 @@ async function Chapter({ params }: { params: PageProps<"/learn/[chapter]">["para
           { label: `Chapter ${level.number} · ${level.title}`, href: `/learn/${level.slug}` },
         ]}
       />
+      <BackLink href="/learn" label="Contents" />
       <main className={styles.page}>
         <header className={styles.head}>
           <p className={styles.running}>

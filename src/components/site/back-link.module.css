@@ -1,0 +1,36 @@
+.bar {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 1.25rem var(--gutter) 0;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  color: var(--ink-muted);
+  font-size: var(--text-meta);
+  transition: color 0.3s var(--ease-out);
+}
+
+.back svg {
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.3s var(--ease-out);
+}
+
+.back:hover {
+  color: var(--ink);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .back:hover svg {
+    transform: translateX(-3px);
+  }
+}

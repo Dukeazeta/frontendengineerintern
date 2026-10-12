@@ -3,7 +3,7 @@
    Type a step larger than usual, as on the landing page. */
 
 .page {
-  padding: clamp(3rem, 2rem + 3.5vw, 5rem) var(--gutter) 0;
+  padding: clamp(1.5rem, 1rem + 2vw, 3rem) var(--gutter) 0;
 }
 
 /* Heads */

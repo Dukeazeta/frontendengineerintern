@@ -1,10 +1,17 @@
 # FrontendEngineerIntern
 
-A free, open course that takes you from zero to frontend engineer, one small lesson at a time. It starts with how the web works and ends with what senior engineers think about.
+A free, open course that takes you from zero to frontend engineer, one short section at a time.
 
-Every lesson opens with a real-life comparison, explains one idea, shows it as an interactive figure, then checks what you remember.
+**Read it:** [frontendengineerintern.dukedev.space](https://frontendengineerintern.dukedev.space)
 
-The course is being built level by level. Level 1 (Web fundamentals) is in progress.
+## What's inside
+
+- 19 chapters in four parts, from how the web works to how senior engineers think
+- Short sections written in plain words, with every new term explained
+- Interactive figures you can tap to see each idea working
+- Exercises at the end of every section
+
+Chapter 1 is being written now. Sections open one at a time as they're finished.
 
 ## Run it locally
 
@@ -12,41 +19,45 @@ You need Node.js 22 or newer and pnpm.
 
 ```bash
 pnpm install
-cp .env.example .env.local   # then set BETTER_AUTH_SECRET
+cp .env.example .env.local
 pnpm db:migrate
 pnpm dev
 ```
 
-Open http://localhost:3000.
-
-Sign-in is optional. To turn on Google or GitHub sign-in, add their client ID and secret to `.env.local`. The callback URLs are listed in `.env.example`.
-
-## Scripts
+Then open http://localhost:3000. Set `BETTER_AUTH_SECRET` in `.env.local` first; `.env.example` explains each value.
 
 | Command | What it does |
-|---|---|
+| --- | --- |
 | `pnpm dev` | Start the dev server |
-| `pnpm build` | Production build |
+| `pnpm build` | Build for production |
+| `pnpm lint` | Lint the code |
 | `pnpm typecheck` | Check types |
-| `pnpm lint` | Lint |
-| `pnpm test` | Unit tests (Vitest) |
-| `pnpm test:e2e` | Browser tests (Playwright) |
-| `pnpm db:generate` | Create a migration from the schema |
-| `pnpm db:migrate` | Apply migrations |
+| `pnpm test` | Run unit tests |
+| `pnpm test:e2e` | Run browser tests |
 
-## How it's built
+## Project layout
 
-- Next.js (App Router) and TypeScript
-- Turso (libSQL) with Drizzle ORM, for learner progress only
-- Better Auth with optional Google and GitHub sign-in
-- Lessons are MDX files in the repo, written and reviewed by hand
-- Lesson figures are made with the [anatomy](https://github.com/wheresryan22/anatomy) skill
+```
+src/app          Pages: landing, contents, chapters, sections
+src/content      The course map and each section (MDX)
+src/components   Figures, book layout and site parts
+figures          Build scripts for the interactive figures
+drizzle          Database migrations
+tests/e2e        Browser tests
+```
+
+## Built with
+
+Next.js, TypeScript, MDX, Drizzle with Turso, Better Auth, hosted on Vercel.
+
+## Credits
+
+- The interactive figures are made with [Anatomy](https://github.com/wheresryan22/anatomy), an open-source skill by Ryan ([@wheresryan22](https://github.com/wheresryan22)), released under the MIT license. Its drawing kit is included in `figures/kit` with its license.
+- The typeface is PP Neue Montreal by [Pangram Pangram](https://pangrampangram.com), used with permission. The font files are not covered by this repository's licenses.
+- Facts in the sections come from [MDN Web Docs](https://developer.mozilla.org) and the other sources each section lists.
 
 ## License
 
-- Code: [MIT](LICENSE)
-- Lessons and figures: [CC BY-NC-SA 4.0](LICENSE-CONTENT.md)
+The code is [MIT](LICENSE). The lessons and figures are [CC BY-NC-SA 4.0](LICENSE-CONTENT.md).
 
-### Fonts
-
-The typeface is PP Neue Montreal by [Pangram Pangram Foundry](https://pangrampangram.com). It's used in this project with permission. The font files in `public/fonts/` are not covered by this repository's licenses. Don't reuse them in your own projects without getting a license from the foundry.
+Made by [Duke Azeta](https://dukedev.space).
