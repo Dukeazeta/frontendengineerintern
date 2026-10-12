@@ -149,10 +149,12 @@
 
 .caption {
   max-width: 40rem;
-  margin: 1rem auto 0;
+  margin: 0.875rem auto 0;
   color: var(--ink-muted);
-  font-size: var(--text-meta);
+  font-size: 1.0625rem;
   line-height: 1.45;
+  text-align: center;
+  text-wrap: pretty;
 }
 
 .captionNum {
@@ -181,9 +183,6 @@
     transform: none;
   }
 
-  .caption {
-    margin-left: 0;
-  }
 }
 
 /* Exercises */

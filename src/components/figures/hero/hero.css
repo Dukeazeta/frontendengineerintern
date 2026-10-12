@@ -79,26 +79,75 @@
 .iso-stage.fe-hero:focus { outline: none; }
 .iso-stage.fe-hero:focus-visible { outline: 1px solid var(--fe-signal); outline-offset: 6px; }
 
-/* On the landing page the card dissolves into the canvas: no frame, quiet corners. */
+/* The card dissolves into the canvas. The figure's words sit in one centred block right under
+   the drawing, big enough to read while watching, and the drawing is capped so both fit on screen. */
 .fe-figure .iso-plate.fe-plate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background: transparent;
   box-shadow: none;
-  padding: 14px 8px 30px;
+  padding: 0;
   overflow: clip;
 }
-.fe-figure .iso-plate-corners { inset: 0 8px 4px; }
+.fe-figure .iso-stage { order: 1; width: 100%; }
+.fe-figure .iso-svg {
+  width: auto;
+  max-width: 100%;
+  max-height: 62svh;
+  margin-inline: auto;
+}
+.fe-figure .iso-plate-corners {
+  order: 2;
+  position: static;
+  inset: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 0.5rem;
+  margin-top: 0.5rem;
+  pointer-events: auto;
+  text-align: center;
+}
+.fe-figure .iso-plate-corner {
+  position: static;
+  inset: auto;
+  color: var(--anatomy-muted);
+  font-size: 0.9375rem;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  white-space: normal;
+}
+.fe-figure .iso-plate-corner[data-corner="readout"] {
+  order: -1;
+  flex-basis: 100%;
+  color: var(--anatomy-strong);
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  font-variant-numeric: tabular-nums;
+}
+.fe-figure .iso-plate-corner[data-corner="fig"] { order: 0; }
+.fe-figure .iso-plate-corner[data-corner="title"] { order: 1; }
+.fe-figure .iso-plate-corner[data-corner="hint"] { order: 2; }
+.fe-figure .iso-plate-corner[data-corner="title"]::before,
+.fe-figure .iso-plate-corner[data-corner="hint"]::before {
+  content: "·";
+  margin-right: 0.5rem;
+  color: var(--anatomy-lo);
+}
+.fe-figure .iso-hint-first .iso-plate-corner[data-corner="title"]::before { content: none; margin: 0; }
 .fe-hit { fill: transparent; }
 .fe-figure .iso-svg text { pointer-events: none; }
 .fe-figure .iso-svg,
 .fe-toggle { -webkit-user-select: none; user-select: none; }
 
-/* The same three switches as real buttons under the figure: easy to tap and named. */
+/* The same switches as real buttons under the figure: easy to tap and named. */
 .fe-switches {
   position: relative;
   display: flex;
   justify-content: center;
   gap: 0.5rem;
-  margin-top: 0.75rem;
+  margin-top: 0.875rem;
 }
 .fe-toggle {
   display: inline-flex;
@@ -131,16 +180,9 @@
 .fe-toggle:focus-visible { outline: 1px solid var(--fe-signal); outline-offset: 3px; }
 
 @media (max-width: 40rem) {
-  .fe-figure .iso-svg { width: 122%; margin-left: -11%; }
-  .fe-figure .iso-plate-corner[data-corner="title"] { display: none; }
+  /* Phones: let the drawing run a little past the edges so its parts stay readable. */
+  .fe-figure .iso-svg { width: 118%; max-width: none; max-height: none; margin-left: -9%; }
 }
-.fe-figure .iso-plate-corner {
-  font-size: 0.6875rem;
-  letter-spacing: -0.01em;
-  text-transform: none;
-}
-.fe-figure .iso-plate-corner[data-corner="readout"] { color: var(--anatomy-strong); }
-.fe-figure .iso-plate-corner { color: var(--anatomy-muted); }
 @media (prefers-reduced-motion: no-preference) {
   .fe-figure .iso-svg { animation: fe-focus 1.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
   @keyframes fe-focus { from { filter: blur(18px); opacity: 0; transform: scale(0.985); } }
