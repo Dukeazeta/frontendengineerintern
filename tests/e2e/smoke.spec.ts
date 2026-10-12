@@ -37,7 +37,7 @@ test("Lesson 1 opens from the roadmap and the quiz completes", async ({ page }) 
   await expect(page.locator('[id="fig-1.2"] [data-readout]')).toHaveText("missing.html · 404 Not Found");
   const answers = ["Your phone’s browser", "Sends a copy of the files", "An error that says not found", "So they can answer anytime", "Yes, if it runs server software"];
   await page.getByRole("button", { name: "The newspaper’s server" }).click();
-  await expect(page.getByText("The client is whatever asks for the page.")).toBeVisible();
+  await expect(page.getByText("The client is the one that asks for the page.")).toBeVisible();
   for (const answer of answers) await page.getByRole("button", { name: answer }).click();
   await expect(page.getByText("All five right. Section 1.1 is done.")).toBeVisible();
 });
