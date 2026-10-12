@@ -33,12 +33,9 @@ export async function generateMetadata({ params }: PageProps<"/learn/[chapter]/[
 
 export default function SectionPage({ params }: PageProps<"/learn/[chapter]/[section]">) {
   return (
-    <>
-      <Header />
-      <Suspense fallback={<main className={styles.page} />}>
-        <Section params={params} />
-      </Suspense>
-    </>
+    <Suspense fallback={<main className={styles.page} />}>
+      <Section params={params} />
+    </Suspense>
   );
 }
 
@@ -52,13 +49,14 @@ async function Section({ params }: { params: PageProps<"/learn/[chapter]/[sectio
 
   return (
     <>
+      <Header
+        trail={[
+          { label: `Chapter ${level.number} · ${level.title}`, href: chapterHref(level.slug) },
+          { label: `${sectionNumber(level, index)} ${mod.meta.title}`, href: lessonHref(level.slug, level.lessons[index].slug) },
+        ]}
+      />
       <main className={styles.page}>
         <header className={styles.head}>
-          <p className={styles.running}>
-            <Link href={chapterHref(level.slug)}>
-              Chapter {level.number} · {level.title}
-            </Link>
-          </p>
           <p className={styles.number}>{sectionNumber(level, index)}</p>
           <Reveal as="h1" className={styles.title} text={mod.meta.title} />
           <Reveal className={styles.lead} delay={120} text={mod.meta.lead} />

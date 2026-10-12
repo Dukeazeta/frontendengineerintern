@@ -1,0 +1,8 @@
+/* Fig 1.4 parts. Shares the cooled light tokens in hero.css (.fe-figure). */
+.dc-well { fill: var(--anatomy-shade-1); }
+.dc-server { cursor: pointer; }
+.dc-server:hover .iso-edge { stroke: var(--anatomy-strong); }
+.dc-light .iso-dot { opacity: 0.25; transition: opacity 0.25s ease; }
+.dc-light[data-on] .iso-dot { opacity: 1; fill: var(--fe-signal); }
+.iso-stage.dc-stage { touch-action: pan-y; }
+.iso-stage.dc-stage:focus { outline: none; }

@@ -22,7 +22,7 @@ export function ServerLookupFigure() {
       <figure className="iso-figure">
         <div className="iso-plate fe-plate">
           <div className="iso-plate-corners" aria-hidden="true">
-            <span className="iso-plate-corner" data-corner="fig">Fig 1.2</span>
+            <span className="iso-plate-corner" data-corner="fig">Fig 1.3</span>
             <span className="iso-plate-corner" data-corner="title">Inside the server</span>
             <span className="iso-plate-corner" data-corner="hint">Ask for a file</span>
             <span className="iso-plate-corner" data-corner="readout" data-readout>
@@ -32,7 +32,7 @@ export function ServerLookupFigure() {
           <div
             className="iso-stage sl-stage"
             tabIndex={0}
-            aria-label="Fig 1.2. Press 1 to 5 to ask the server for index.html, style.css, app.js, photo.jpg or missing.html."
+            aria-label="Fig 1.3. Press 1 to 5 to ask the server for index.html, style.css, app.js, photo.jpg or missing.html."
             dangerouslySetInnerHTML={{ __html: FIG_SVG }}
           />
           <span className="fe-sr" role="status" aria-live="polite" data-status />

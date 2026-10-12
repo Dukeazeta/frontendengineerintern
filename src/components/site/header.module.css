@@ -32,3 +32,27 @@
     display: none;
   }
 }
+
+.trail {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.25rem 1.25rem;
+  min-width: 0;
+}
+
+.trail a {
+  color: var(--ink-muted);
+  transition: color 0.3s var(--ease-out);
+}
+
+.trail a:hover,
+.trail a[aria-current="page"] {
+  color: var(--ink);
+}
+
+@media (max-width: 30rem) {
+  .trail a:not([aria-current="page"]) {
+    display: none;
+  }
+}

@@ -240,7 +240,7 @@ const live = readFileSync(join(OUT, "live.mjs"), "utf8").replace(/^import .*$/gm
 const css = readFileSync(join(OUT, "figure.css"), "utf8") + readFileSync(join(ROOT, "src", "components", "figures", "hero", "hero.css"), "utf8").split("/* On the landing page")[0];
 const body =
   `<style>${css}</style>` +
-  k.plateHtml({ fig: "Fig 1.2", title: "Inside the server", hint: "Ask for a file", readout: "4 files stored", keys: [], caption: "", body: `<div class="iso-stage sl-stage" tabindex="0">${svg}</div>` });
+  k.plateHtml({ fig: "Fig 1.3", title: "Inside the server", hint: "Ask for a file", readout: "4 files stored", keys: [], caption: "", body: `<div class="iso-stage sl-stage" tabindex="0">${svg}</div>` });
 mkdirSync(join(HERE, "out"), { recursive: true });
 writeFileSync(
   join(HERE, "out", "fig.html"),

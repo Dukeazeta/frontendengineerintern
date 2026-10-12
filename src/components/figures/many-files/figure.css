@@ -1,0 +1,28 @@
+/* Fig 1.3 parts. Shares the cooled light tokens in hero.css (.fe-figure). */
+.mf-well { fill: var(--anatomy-shade-1); }
+.mf-dark { fill: var(--anatomy-shade-0); }
+.mf-glass,
+.mf-screen { fill: #fdfdfd; }
+.mf-tube-edge { fill: none; stroke: var(--anatomy-lo); stroke-width: 9px; stroke-linecap: butt; stroke-linejoin: round; }
+.mf-tube { fill: none; stroke: #f8f8fa; stroke-width: 7.6px; stroke-linecap: butt; stroke-linejoin: round; }
+.mf-tube-shine { fill: none; stroke: #ffffff; stroke-width: 1.4px; stroke-linecap: butt; stroke-linejoin: round; transform: translate(-1.6px, -1.2px); opacity: 0.9; }
+.mf-route { fill: none; stroke: none; }
+.mf-tube-edge, .mf-tube, .mf-tube-shine { vector-effect: none; }
+.mf-capsule { fill: #fdfdfd; stroke: var(--fe-ink); stroke-width: 1px; vector-effect: non-scaling-stroke; pointer-events: none; }
+.mf-capsule[data-full] { fill: var(--fe-ink); }
+.mf-light .iso-dot { opacity: 0.2; transition: opacity 0.2s ease; }
+.mf-light[data-on] .iso-dot { opacity: 1; }
+.mf-file { fill: var(--fe-ink); font-family: var(--anatomy-mono); }
+.mf-count { fill: var(--anatomy-mid); font-family: var(--anatomy-mono); }
+.mf-layer { transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.mf-ink { fill: var(--fe-ink); }
+.mf-outline { fill: none; stroke: var(--fe-ink); stroke-width: 0.5px; vector-effect: non-scaling-stroke; }
+.mf-band { fill: var(--anatomy-shade-1); }
+.mf-panel { fill: var(--anatomy-shade-2); }
+.mf-button { fill: var(--fe-signal); }
+.mf-photo { fill: var(--anatomy-shade-0); }
+.mf-sun { fill: #fdfdfd; }
+.mf-hill { fill: var(--anatomy-mid); opacity: 0.5; }
+[data-monitor] { cursor: pointer; }
+.iso-stage.mf-stage { touch-action: pan-y; }
+.iso-stage.mf-stage:focus { outline: none; }

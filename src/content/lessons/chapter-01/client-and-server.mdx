@@ -1,14 +1,18 @@
 import { Cite, Figure, Note } from "@/components/lesson/blocks";
 import { Quiz } from "@/components/lesson/quiz";
 import { ClientServerFigure } from "@/components/figures/client-server/client-server-figure";
+import { ManyFilesFigure } from "@/components/figures/many-files/many-files-figure";
 import { ServerLookupFigure } from "@/components/figures/server-lookup/server-lookup-figure";
+import { DataCentreFigure } from "@/components/figures/data-centre/data-centre-figure";
 
 export const meta = {
   title: "Client and server",
   lead: "When you open a web page, it comes to you from another computer. This section is about those two computers and what each one does.",
   sources: [
     { label: "How the web works", href: "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works", note: "MDN Web Docs. Clients, servers and the parts in between." },
-    { label: "What is a web server?", href: "https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_web_server", note: "MDN Web Docs. What a server keeps and how it answers." },
+    { label: "What is a web server?", href: "https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_web_server", note: "MDN Web Docs. What a server keeps, how it answers, and why websites use hosting." },
+    { label: "How browsers load websites", href: "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards/How_browsers_load_websites", note: "MDN Web Docs. Why one page means several requests." },
+    { label: "Data center", href: "https://en.wikipedia.org/wiki/Data_center", note: "Wikipedia. What a data centre is and what keeps it running." },
   ],
 };
 
@@ -19,6 +23,8 @@ Every time you open a web page, two computers work together. One computer asks f
 <Note term="Browser">The app you use to look at web pages. Chrome, Safari and Firefox are browsers.</Note>
 
 Your phone, tablet or laptop is a client. To look at web pages, you use an app called a browser, such as Chrome, Safari or Firefox. When you open a page, your browser is the one doing the asking.
+
+Most of the time the client is a browser, but not always. Other programs on your devices, like the apps on your phone, ask servers for things too.<Cite n={1} />
 
 <Note term="Server">A computer that keeps a website’s files and sends copies to anyone who asks.</Note>
 
@@ -40,14 +46,42 @@ The asking has a name: a request. The answer has a name too: a response. Section
 
 The server keeps its own files. It only ever sends copies, so it still has the page for the next person who asks. A busy server answers lots of clients at the same time, the way one kitchen cooks for a whole restaurant.
 
+## One page, many files
+
+A web page is usually not one file. It is several. When you open a page, your browser first asks for the HTML file. The HTML tells the browser which other files the page needs: a CSS file for how the page looks, a JavaScript file for the parts you can click and use, and the pictures. The browser then asks the server for each of those files, one request for each.<Cite n={3} /> So opening one page can mean many requests.
+
+<Figure n="1.2" caption="Opening one page. Each capsule is one request: it goes up empty and comes back with one file. The page builds up as the files arrive, HTML first, then CSS, JavaScript and a photo. Tap the monitor to load the page again.">
+  <ManyFilesFigure />
+</Figure>
+
+## What is inside a server
+
+<Note term="HTTP server">The program on a server that waits for requests and sends back files.</Note>
+
+A server is two things working together. The first is the computer itself, the machine you could touch. The second is a program running on that computer, called an HTTP server. The HTTP server waits for requests, finds the right file and sends a copy back.<Cite n={2} />
+
 ## How a server finds a file
 
 <Note term="404 Not Found">The error a server sends back when it does not have the file you asked for.</Note>
 
-Every request asks for one file by its name. The server looks for a file with that name. If it has the file, it sends a copy. If it does not have it, it still answers, but the answer is an error that says the file was not found. That error is called 404 Not Found.<Cite n={2} />
+Every request asks for one file by its name. The HTTP server looks for a file with that name. If it has the file, it sends a copy. If it does not have it, it still answers, but the answer is an error that says the file was not found. That error is called 404 Not Found.<Cite n={2} />
 
-<Figure n="1.2" caption="Inside the server. Ask for a file and the picker runs to its card. A card there means a copy goes out. An empty slot means the answer is 404 Not Found.">
+<Figure n="1.3" caption="Inside the server. The picker does the HTTP server’s job. Ask for a file and it runs to that file’s card. A card there means a copy goes out. An empty slot means the answer is 404 Not Found.">
   <ServerLookupFigure />
+</Figure>
+
+## Where servers live
+
+<Note term="Hosting company">A company that keeps your website on its servers for you, usually for a fee.</Note>
+
+You could turn your own computer into a server, but most websites are not kept that way. A home computer gets switched off, and its address on the internet can change. So people usually pay a hosting company to keep their website on a server that stays on, keeps the same address, and is looked after for them.<Cite n={2} />
+
+<Note term="Data centre">A building full of servers, with backup power, cooling and internet connections.</Note>
+
+Hosting companies keep their servers in buildings called data centres. Inside, servers sit in tall cabinets called racks. A data centre has backup power for when the electricity fails, cooling to stop the machines getting too hot, and fast connections to the internet.<Cite n={4} />
+
+<Figure n="1.4" caption="A corner of a data centre. Tap a server, or pick one below, to slide it out and see which websites it keeps. The servers are numbered from the bottom, and one server can keep many websites.">
+  <DataCentreFigure />
 </Figure>
 
 ## Worth knowing
@@ -62,7 +96,7 @@ Answer from memory. Scrolling up first only makes it feel easier.
 
 <Quiz
   lesson="chapter-01/client-and-server"
-  done="All five right. Section 1.1 is done."
+  done="All seven right. Section 1.1 is done."
   questions={[
     {
       id: "who-is-client",
@@ -81,6 +115,14 @@ Answer from memory. Scrolling up first only makes it feel easier.
       wrong: "The server sends copies of its files. Putting the page together on your screen is the browser’s job.",
     },
     {
+      id: "many-requests",
+      prompt: "You open one web page. How many requests does your browser usually send?",
+      options: ["Just one for the whole page", "Several, one for every file needed", "None, the page is already there"],
+      answer: 1,
+      right: "Right. The HTML comes first, then one request for each file it names.",
+      wrong: "A page is made of several files, and the browser asks for each one, so it sends several requests.",
+    },
+    {
       id: "missing-file",
       prompt: "A client asks for a file the server does not have. What comes back?",
       options: ["A blank copy of the page", "An error that says not found", "The closest file it can find"],
@@ -95,6 +137,14 @@ Answer from memory. Scrolling up first only makes it feel easier.
       answer: 0,
       right: "Right. Someone could ask for a page at any hour, so the server has to be ready.",
       wrong: "Most servers have no screen at all. They stay on so they can answer whenever someone asks.",
+    },
+    {
+      id: "hosting",
+      prompt: "Why do most websites live on servers at a hosting company?",
+      options: ["Websites are not allowed at home", "They stay on, day and night", "Home computers cannot run any websites"],
+      answer: 1,
+      right: "Right. A hosting company keeps the server switched on, at the same address, and looks after it.",
+      wrong: "You can run a website at home, but a home computer gets switched off and its address can change. Hosting companies keep servers on and looked after.",
     },
     {
       id: "laptop-server",

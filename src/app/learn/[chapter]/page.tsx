@@ -21,12 +21,9 @@ export async function generateMetadata({ params }: PageProps<"/learn/[chapter]">
 
 export default function ChapterPage({ params }: PageProps<"/learn/[chapter]">) {
   return (
-    <>
-      <Header />
-      <Suspense fallback={<main className={styles.page} />}>
-        <Chapter params={params} />
-      </Suspense>
-    </>
+    <Suspense fallback={<main className={styles.page} />}>
+      <Chapter params={params} />
+    </Suspense>
   );
 }
 
@@ -37,6 +34,12 @@ async function Chapter({ params }: { params: PageProps<"/learn/[chapter]">["para
 
   return (
     <>
+      <Header
+        trail={[
+          { label: "Contents", href: "/learn" },
+          { label: `Chapter ${level.number} · ${level.title}`, href: `/learn/${level.slug}` },
+        ]}
+      />
       <main className={styles.page}>
         <header className={styles.head}>
           <p className={styles.running}>
