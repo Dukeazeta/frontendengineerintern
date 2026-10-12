@@ -1,0 +1,476 @@
+/* The book: contents, chapter openers and section pages. A centred head, then one reading
+   column (text left-aligned for reading) with margin notes beside it on wide screens.
+   Type a step larger than usual, as on the landing page. */
+
+.page {
+  padding: clamp(3rem, 2rem + 3.5vw, 5rem) var(--gutter) 0;
+}
+
+/* Heads */
+.head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.running {
+  color: var(--ink-muted);
+  font-size: var(--text-meta);
+}
+
+.running a {
+  color: inherit;
+  transition: color 0.3s var(--ease-out);
+}
+
+.running a:hover {
+  color: var(--ink);
+}
+
+.number {
+  margin-top: 1.5rem;
+  color: var(--ink-muted);
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem);
+  font-variant-numeric: tabular-nums;
+}
+
+.title {
+  max-width: 14ch;
+  margin-top: 0.5rem;
+  font-weight: inherit;
+  font-size: clamp(3rem, 1.8rem + 4.6vw, 5.25rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.lead {
+  max-width: 36ch;
+  margin-top: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  color: var(--ink-muted);
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem);
+  line-height: 1.35;
+  text-wrap: balance;
+}
+
+/* Reading column */
+.prose {
+  width: min(100%, 40rem);
+  margin: clamp(3.5rem, 2.5rem + 3vw, 5.5rem) auto 0;
+  font-size: 1.1875rem;
+  line-height: 1.6;
+}
+
+.prose > * + * {
+  margin-top: 1.25em;
+}
+
+.prose :global(h2) {
+  margin-top: clamp(3.5rem, 2.75rem + 2vw, 5rem);
+  font-weight: inherit;
+  font-size: clamp(1.875rem, 1.5rem + 1.2vw, 2.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.prose :global(h2) + * {
+  margin-top: 1.25rem;
+}
+
+.prose :global(ul),
+.prose :global(ol) {
+  padding-left: 1.1em;
+}
+
+.prose :global(li) + :global(li) {
+  margin-top: 0.75em;
+}
+
+.prose :global(li::marker) {
+  color: var(--ink-muted);
+}
+
+.prose :global(strong) {
+  font-weight: inherit;
+  color: var(--ink-strong);
+}
+
+/* Margin notes: inline on small screens, in the side margin on wide ones. */
+.note {
+  display: block;
+  margin: 1rem 0 0;
+  padding-left: 1rem;
+  border-left: 0.5px solid var(--hairline-strong);
+  color: var(--ink-muted);
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.noteTerm {
+  display: block;
+  color: var(--ink);
+}
+
+.noteBody {
+  display: block;
+  margin-top: 0.125rem;
+}
+
+.cite {
+  margin-left: 0.1em;
+  font-size: 0.7em;
+  line-height: 0;
+}
+
+.cite a {
+  color: var(--signal);
+}
+
+/* Figures */
+.figure {
+  width: min(100vw - var(--gutter) * 2, 64rem);
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.prose > .figure {
+  margin-top: clamp(2.5rem, 2rem + 2vw, 3.5rem);
+  margin-bottom: 0.5rem;
+}
+
+.prose > .figure + * {
+  margin-top: 2rem;
+}
+
+.figureBody {
+  width: 100%;
+}
+
+.caption {
+  max-width: 40rem;
+  margin: 1rem auto 0;
+  color: var(--ink-muted);
+  font-size: var(--text-meta);
+  line-height: 1.45;
+}
+
+.captionNum {
+  margin-right: 0.375rem;
+  color: var(--ink);
+}
+
+@media (min-width: 78rem) {
+  /* Text column plus a 16rem margin, centred as one block. */
+  .prose {
+    margin-left: calc((100% - 40rem - 18.5rem) / 2);
+  }
+
+  .note {
+    float: right;
+    clear: right;
+    width: 16rem;
+    margin: 0.3rem -18.5rem 0 0;
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .figure {
+    width: 58.5rem;
+    margin-left: 0;
+    transform: none;
+  }
+
+  .caption {
+    margin-left: 0;
+  }
+}
+
+/* Exercises */
+.quiz {
+  margin-top: 2rem;
+}
+
+.questions {
+  padding: 0;
+  list-style: none;
+}
+
+.question + .question {
+  margin-top: 2.5rem;
+}
+
+.prompt {
+  display: flex;
+  gap: 0.875rem;
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+
+.qNum {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-top: 0.05rem;
+  border-radius: var(--radius-pill);
+  box-shadow: inset 0 0 0 0.5px var(--hairline-strong);
+  color: var(--ink-muted);
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-left: 2.625rem;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 3rem;
+  padding: 0.625rem 1.125rem;
+  border: 0;
+  border-radius: 1rem;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 0.5px var(--hairline-strong);
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.0625rem;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+  transition: box-shadow 0.3s var(--ease-out), color 0.3s var(--ease-out), opacity 0.3s var(--ease-out);
+}
+
+.option:hover:not(:disabled) {
+  box-shadow: inset 0 0 0 0.5px var(--ink-muted);
+}
+
+.option:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+
+.mark {
+  flex: none;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: var(--radius-pill);
+  box-shadow: inset 0 0 0 0.5px var(--ink-muted);
+}
+
+.option[data-state="right"] {
+  box-shadow: inset 0 0 0 1px var(--ink);
+}
+
+.option[data-state="right"] .mark {
+  background: var(--ink);
+  box-shadow: none;
+}
+
+.option[data-state="wrong"] {
+  color: var(--ink-muted);
+  text-decoration: line-through;
+  text-decoration-thickness: 0.5px;
+}
+
+.feedback {
+  min-height: 1.5em;
+  margin-top: 0.75rem;
+  padding-left: 2.625rem;
+  color: var(--ink-muted);
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+
+.feedback[data-state="right"] {
+  color: var(--ink);
+}
+
+.quizStatus {
+  margin-top: 2.5rem;
+  color: var(--ink-muted);
+  font-size: var(--text-meta);
+}
+
+.quizStatus[data-complete] {
+  color: var(--ink);
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+}
+
+/* Notes and sources, then the page turn */
+.end {
+  width: min(100%, 40rem);
+  margin: clamp(4.5rem, 3.5rem + 3vw, 6.5rem) auto 0;
+  padding-bottom: clamp(4rem, 3rem + 3vw, 6rem);
+}
+
+@media (min-width: 78rem) {
+  .end {
+    margin-left: calc((100% - 40rem - 18.5rem) / 2);
+  }
+}
+
+.endTitle {
+  padding-top: 1.5rem;
+  border-top: 0.5px solid var(--hairline-strong);
+  color: var(--ink-muted);
+  font-weight: inherit;
+  font-size: var(--text-meta);
+}
+
+.sources {
+  margin-top: 1rem;
+  padding: 0;
+  list-style: none;
+  font-size: 1.0625rem;
+}
+
+.sources li {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr;
+  gap: 0.5rem;
+  scroll-margin-top: 6rem;
+}
+
+.sources li + li {
+  margin-top: 0.75rem;
+}
+
+.sourceNum {
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.sourceNote {
+  display: block;
+  color: var(--ink-muted);
+  font-size: var(--text-meta);
+}
+
+.ask {
+  margin-top: 2rem;
+  font-size: 1.0625rem;
+}
+
+.turns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  padding-top: 1.75rem;
+  border-top: 0.5px solid var(--hairline-strong);
+}
+
+.turn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  color: var(--ink);
+}
+
+.turn[data-side="next"] {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.turnLabel {
+  color: var(--ink-muted);
+  font-size: var(--text-meta);
+}
+
+.turnTitle {
+  font-size: clamp(1.1875rem, 1.1rem + 0.4vw, 1.4375rem);
+  line-height: 1.25;
+}
+
+a.turn:hover .turnTitle {
+  color: var(--ink-muted);
+}
+
+.soon {
+  display: inline-flex;
+  align-items: center;
+  height: 1.375rem;
+  padding: 0 0.625rem;
+  border-radius: var(--radius-pill);
+  box-shadow: inset 0 0 0 0.5px var(--hairline-strong);
+  color: var(--ink-muted);
+  font-size: var(--text-label);
+}
+
+/* Chapter opener and contents */
+.contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: clamp(4rem, 3rem + 3vw, 6rem);
+}
+
+.chapterSummary {
+  max-width: 34ch;
+  margin-top: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  color: var(--ink-muted);
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem);
+  line-height: 1.35;
+  text-wrap: balance;
+}
+
+.toc {
+  width: min(100%, 40rem);
+  margin: clamp(3rem, 2rem + 3vw, 5rem) auto 0;
+  padding: 0 0 clamp(4rem, 3rem + 3vw, 6rem);
+  list-style: none;
+  border-top: 0.5px solid var(--hairline-strong);
+}
+
+.tocRow {
+  display: grid;
+  grid-template-columns: 3rem 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  min-height: 3.75rem;
+  border-bottom: 0.5px solid var(--hairline-strong);
+}
+
+.tocNum {
+  color: var(--ink-muted);
+  font-size: var(--text-meta);
+  font-variant-numeric: tabular-nums;
+}
+
+.tocTitle {
+  font-size: clamp(1.1875rem, 1.1rem + 0.35vw, 1.375rem);
+  line-height: 1.25;
+}
+
+a.tocTitle {
+  color: var(--signal);
+}
+
+@media (max-width: 40rem) {
+  .options,
+  .feedback {
+    padding-left: 0;
+  }
+
+  .turns {
+    grid-template-columns: 1fr;
+  }
+
+  .turn[data-side="next"] {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+/* In the book the caption carries the figure number, so the plate's own number is hidden. */
+.figureBody :global(.iso-plate-corner[data-corner="fig"]) {
+  display: none;
+}

@@ -1,0 +1,29 @@
+/* Fig 1 parts. Shares the cooled light tokens in hero.css (.fe-figure). */
+.cs-well { fill: var(--anatomy-shade-1); }
+.cs-dark { fill: var(--anatomy-shade-0); }
+.cs-glass { fill: #fdfdfd; }
+.cs-bar { fill: var(--fe-ink); }
+.cs-line { fill: var(--anatomy-mid); }
+.cs-img { fill: var(--anatomy-shade-1); }
+.cs-button { fill: var(--fe-signal); }
+.cs-page { transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.cs-wait { transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+.cs-wait circle {
+  fill: none;
+  stroke: var(--anatomy-lo);
+  stroke-width: 0.8px;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 3 3;
+}
+.cs-cord { stroke-width: 1.2px; }
+.cs-pulse { fill: var(--fe-ink); stroke: #fdfdfd; stroke-width: 1px; vector-effect: non-scaling-stroke; pointer-events: none; }
+.cs-pulse[data-back] { fill: var(--fe-signal); }
+.cs-port .iso-dot,
+.cs-activity .iso-dot { opacity: 0.25; transition: opacity 0.2s ease; }
+.cs-port[data-on] .iso-dot,
+.cs-activity[data-on] .iso-dot { opacity: 1; }
+.cs-client { cursor: pointer; }
+.cs-client:hover .iso-edge { stroke: var(--anatomy-strong); }
+.iso-stage.cs-stage { touch-action: pan-y; }
+.iso-stage.cs-stage:focus { outline: none; }
+.iso-stage.cs-stage:focus-visible { outline: 1px solid var(--fe-signal); outline-offset: 6px; }

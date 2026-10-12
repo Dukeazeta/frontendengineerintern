@@ -13,7 +13,7 @@ Take someone who has never written code to the point where they can get hired as
 
 ## Constraints
 - Learners start with zero programming knowledge. Define every new word the first time it appears.
-- Lead every new idea with a real-life comparison before the technical term.
+- Written like a technical book: plain prose, numbered sections and figures. Analogies only in passing.
 - Lessons are short: one idea, one win, finishable in one sitting.
 - Built one level and one lesson at a time, each reviewed before the next.
 

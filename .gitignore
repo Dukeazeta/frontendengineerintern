@@ -62,3 +62,10 @@ figures/hero/out/
 
 .vercel
 .env*
+
+figures/client-server/shots/
+figures/client-server/out/
+
+figures/server-lookup/shots/
+figures/server-lookup/out/
+tests/console.mjs

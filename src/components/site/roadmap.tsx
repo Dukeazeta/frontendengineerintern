@@ -1,20 +1,23 @@
-import { levels, type Level } from "@/content/course";
+import Link from "next/link";
+import { chapterHref, lessonHref, levels, sectionNumber, type Level } from "@/content/course";
 import styles from "./roadmap.module.css";
 
 const STAGES: { key: Level["stage"]; name: string }[] = [
-  { key: "foundations", name: "Foundations" },
-  { key: "builder", name: "Builder" },
-  { key: "professional", name: "Professional" },
-  { key: "senior", name: "Senior" },
+  { key: "foundations", name: "Part 1 · Foundations" },
+  { key: "builder", name: "Part 2 · Builder" },
+  { key: "professional", name: "Part 3 · Professional" },
+  { key: "senior", name: "Part 4 · Senior" },
 ];
-
-// Lessons go live one at a time; until then every lesson is marked coming soon.
-const LIVE_LESSONS = new Set<string>();
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-function Tag({ live }: { live: boolean }) {
-  return <span className={styles.tag} data-live={live || undefined}>{live ? "In progress" : "Coming soon"}</span>;
+function Tag({ state }: { state: "progress" | "ready" | "soon" }) {
+  const text = { progress: "In progress", ready: "Ready", soon: "Coming soon" }[state];
+  return (
+    <span className={styles.tag} data-live={state === "soon" ? undefined : true}>
+      {text}
+    </span>
+  );
 }
 
 function LevelRow({ level }: { level: Level }) {
@@ -22,8 +25,14 @@ function LevelRow({ level }: { level: Level }) {
   const head = (
     <>
       <span className={styles.num}>{pad(level.number)}</span>
-      <span className={styles.title}>{level.title}</span>
-      <Tag live={open} />
+      {level.lessons.length > 0 ? (
+        <Link href={chapterHref(level.slug)} className={styles.title}>
+          {level.title}
+        </Link>
+      ) : (
+        <span className={styles.title}>{level.title}</span>
+      )}
+      <Tag state={open ? "progress" : "soon"} />
     </>
   );
 
@@ -47,15 +56,19 @@ function LevelRow({ level }: { level: Level }) {
         <ol className={styles.lessons}>
           {level.lessons.map((lesson, i) => (
             <li key={lesson.slug} className={styles.lesson}>
-              <span className={styles.lessonNum}>
-                {level.number}.{i + 1}
-              </span>
-              <span className={styles.lessonTitle}>{lesson.title}</span>
-              <Tag live={LIVE_LESSONS.has(`${level.slug}/${lesson.slug}`)} />
+              <span className={styles.lessonNum}>{sectionNumber(level, i)}</span>
+              {lesson.ready ? (
+                <Link href={lessonHref(level.slug, lesson.slug)} className={styles.lessonLink}>
+                  {lesson.title}
+                </Link>
+              ) : (
+                <span className={styles.lessonTitle}>{lesson.title}</span>
+              )}
+              <Tag state={lesson.ready ? "ready" : "soon"} />
             </li>
           ))}
         </ol>
-        <p className={styles.note}>Lessons open one at a time as they’re finished.</p>
+        <p className={styles.note}>Sections open one at a time as they’re finished.</p>
       </details>
     </li>
   );
@@ -75,7 +88,7 @@ export function Roadmap() {
                 {stage.name}
               </h3>
               <p className={styles.range}>
-                Levels {first} to {last}
+                Chapters {first} to {last}
               </p>
             </div>
             <ol className={styles.levels}>

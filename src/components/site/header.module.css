@@ -1,0 +1,34 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 2.125rem var(--gutter) 0;
+  font-size: 1rem;
+}
+
+.name {
+  color: var(--ink);
+}
+
+.links {
+  display: flex;
+  gap: clamp(1rem, 0.5rem + 2vw, 2rem);
+}
+
+.links a {
+  color: var(--ink);
+  transition: color 0.3s var(--ease-out);
+}
+
+.links a:hover {
+  color: var(--ink-muted);
+}
+
+@media (max-width: 30rem) {
+  .links a:first-child {
+    display: none;
+  }
+}

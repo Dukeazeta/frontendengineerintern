@@ -5,7 +5,7 @@ import { user } from "./auth";
 
 const now = sql`(cast(unixepoch('subsecond') * 1000 as integer))`;
 
-// One row per learner per lesson. Slugs look like "level-01/client-and-server".
+// One row per learner per lesson. Slugs look like "chapter-01/client-and-server".
 export const lessonProgress = sqliteTable(
   "lesson_progress",
   {

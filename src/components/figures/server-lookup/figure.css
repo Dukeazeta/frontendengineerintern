@@ -1,0 +1,13 @@
+/* Fig 1.2 parts. Shares the cooled light tokens in hero.css (.fe-figure). */
+.sl-well { fill: var(--anatomy-shade-1); }
+.sl-dark { fill: var(--anatomy-shade-0); }
+.sl-screen { fill: #fdfdfd; }
+.sl-file { fill: var(--fe-ink); font-family: var(--anatomy-mono); }
+.sl-status { fill: var(--anatomy-mid); font-family: var(--anatomy-mono); }
+.sl-status[data-tone="found"] { fill: var(--fe-signal); }
+.sl-status[data-tone="missing"] { fill: var(--fe-ink); }
+.sl-light .iso-dot { opacity: 0.25; transition: opacity 0.2s ease; }
+.sl-light[data-on] .iso-dot { opacity: 1; }
+.iso-stage.sl-stage { touch-action: pan-y; }
+.iso-stage.sl-stage:focus { outline: none; }
+.iso-stage.sl-stage:focus-visible { outline: 1px solid var(--fe-signal); outline-offset: 6px; }

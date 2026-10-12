@@ -20,7 +20,7 @@ A self-paced course that follows a 19-level roadmap, from how the web works to s
 
 ## Positioning
 
-Each lesson is one small, finishable step: a real-life comparison, one idea, an interactive figure that shows the idea working as a machine, and a quiz answered from memory. Later lessons add code checked in the page.
+A book you can poke: each level is a chapter and each lesson a short numbered section, written as plain technical prose with interactive figures that show each idea working as a machine, and exercises answered from memory at the end. Later sections add code checked in the page.
 
 ## Operating Context
 
@@ -30,7 +30,7 @@ Lessons are written once, reviewed by hand and revisited during review. The cour
 
 - 19 levels, each with its own lessons. Lessons are added to `src/content/course.ts` as they are built.
 - Progress is kept in the browser and synced to the database once a learner signs in. Sign-in is optional.
-- One anatomy figure per lesson. Figures are slow to generate, so they are built one at a time.
+- A section can carry several anatomy figures. Figures are slow to generate, so they are built one at a time.
 - Code exercises (editor, sandboxed preview, hidden tests) start at Level 2.
 - No AI tutor until several levels exist.
 - Public and open source. Code MIT, lessons CC BY-NC-SA 4.0.
@@ -48,7 +48,7 @@ No learners, results, testimonials or metrics exist yet. Never invent progress, 
 ## Product Principles
 
 1. Assume zero prior knowledge. Define every new word the first time it appears.
-2. Real-life comparison first, technical term second.
+2. Read like a book: numbered sections, numbered figures, sources as notes. Analogies only in passing, never as boxes.
 3. One idea per lesson, one win per lesson.
 4. Show the concept working. The figure should make the idea obvious before the words do.
 5. Retrieval beats rereading: quizzes from memory, spaced review.

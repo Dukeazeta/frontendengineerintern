@@ -245,8 +245,10 @@ export function mountHero(root) {
 
   say();
   render();
+  root.dataset.ready = "true";
 
   return () => {
+    delete root.dataset.ready;
     cancelAnimationFrame(frame);
     clearTimeout(idleTimer);
     observer.disconnect();

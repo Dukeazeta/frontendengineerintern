@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { HeroFigure } from "@/components/figures/hero/hero-figure";
+import { Header } from "@/components/site/header";
 import { Reveal } from "@/components/site/reveal";
 import { Roadmap } from "@/components/site/roadmap";
 import styles from "./landing.module.css";
@@ -7,35 +9,23 @@ const REPO = "https://github.com/Dukeazeta/frontendengineerintern";
 
 const METHOD = [
   {
-    title: "Real life first",
-    body: "Each new idea starts with something you already know, like a waiter carrying orders between your table and the kitchen. The technical word comes after.",
-  },
-  {
-    title: "One idea per lesson",
-    body: "A lesson teaches one thing, and by the end of it you can do something you couldn’t before.",
+    title: "Read a short section",
+    body: "Each section explains one idea in plain words, and every new term is defined where it first appears.",
   },
   {
     title: "See it working",
-    body: "An interactive figure shows the idea as a machine you can switch on and try.",
+    body: "Interactive figures show each part of the idea as a machine you can switch on and try.",
   },
   {
-    title: "Remember it",
-    body: "You answer short quizzes from memory, and the course brings questions back later so they stick.",
+    title: "Do the exercises",
+    body: "Every section ends with exercises you answer from memory, with feedback straight away.",
   },
 ];
 
 export default function Home() {
   return (
     <>
-      <header className={styles.header}>
-        <a href="#top" className={styles.name}>
-          FrontendEngineerIntern
-        </a>
-        <nav aria-label="Main" className={styles.links}>
-          <a href="#method">How a lesson works</a>
-          <a href="#roadmap">Roadmap</a>
-        </nav>
-      </header>
+      <Header />
 
       <main id="top">
         <section className={styles.hero} aria-labelledby="hero-title">
@@ -46,11 +36,11 @@ export default function Home() {
             text="A free course that starts at your first web page and goes all the way to how senior engineers think, one small lesson at a time."
           />
           <div className={styles.actions}>
-            <a href="#roadmap" className={styles.cta}>
-              See the roadmap
-            </a>
-            <a href="#method" className="text-link">
-              How a lesson works
+            <Link href="/learn/chapter-01/client-and-server" className={styles.cta}>
+              Start reading
+            </Link>
+            <a href="#contents" className="text-link">
+              See the contents
             </a>
           </div>
           <div className={styles.figure}>
@@ -59,8 +49,8 @@ export default function Home() {
         </section>
 
         <section id="method" className={`${styles.section} ${styles.raised}`} aria-labelledby="method-title">
-          <Reveal as="h2" id="method-title" className={styles.title} text="How a lesson works" />
-          <Reveal className={styles.lead} text="Every lesson follows the same four steps." />
+          <Reveal as="h2" id="method-title" className={styles.title} text="How the book works" />
+          <Reveal className={styles.lead} text="Nineteen chapters, each made of short sections. Every section works the same way." />
           <ol className={styles.steps}>
             {METHOD.map((step, i) => (
               <li key={step.title} className={styles.step}>
@@ -70,14 +60,14 @@ export default function Home() {
               </li>
             ))}
           </ol>
-          <p className={styles.note}>No coding experience needed. Lessons link to their sources, mostly MDN.</p>
+          <p className={styles.note}>No coding experience needed. Every section lists its sources, mostly MDN.</p>
         </section>
 
-        <section id="roadmap" className={styles.section} aria-labelledby="roadmap-title">
-          <Reveal as="h2" id="roadmap-title" className={styles.title} text="The roadmap" />
+        <section id="contents" className={styles.section} aria-labelledby="contents-title">
+          <Reveal as="h2" id="contents-title" className={styles.title} text="Contents" />
           <Reveal
             className={styles.lead}
-            text="Nineteen levels, from how the web works to how senior engineers think."
+            text="Nineteen chapters in four parts, from how the web works to how senior engineers think."
           />
           <Roadmap />
         </section>

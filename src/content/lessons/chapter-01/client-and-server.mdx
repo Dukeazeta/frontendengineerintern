@@ -1,0 +1,103 @@
+import { Cite, Figure, Note } from "@/components/lesson/blocks";
+import { Quiz } from "@/components/lesson/quiz";
+import { ClientServerFigure } from "@/components/figures/client-server/client-server-figure";
+import { ServerLookupFigure } from "@/components/figures/server-lookup/server-lookup-figure";
+
+export const meta = {
+  title: "Client and server",
+  lead: "Every web page you open travels from one computer to another. This section names the two sides of that trip and what each one does.",
+  sources: [
+    { label: "How the web works", href: "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works", note: "MDN Web Docs. Clients, servers and the parts in between." },
+    { label: "What is a web server?", href: "https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_web_server", note: "MDN Web Docs. What a server stores and how it answers." },
+  ],
+};
+
+<Note term="Client">The device that asks for a web page, together with the program on it doing the asking.</Note>
+
+Two computers take part every time you open a web page. One asks for the page, and the other has it and sends it. The web calls the first a client and the second a server.<Cite n={1} />
+
+<Note term="Browser">The app you use to open web pages.</Note>
+
+A client is your phone, laptop or tablet, plus the program on it that does the asking. Most of the time that program is a browser, such as Chrome, Safari or Firefox.
+
+<Note term="Server">A computer that stores a website’s files and sends copies to the clients that ask.</Note>
+
+A server is a computer that stores a website’s files and sends a copy to any client that asks for them.<Cite n={2} /> Those files are the website itself: code written in HTML, CSS and JavaScript, plus things like images and fonts.
+
+## One trip, start to finish
+
+Opening a page takes three steps. Your browser asks a server for the page. The server finds the files and sends copies back. Your browser turns those files into the page you see.
+
+The asking is called a request, and the answer is called a response. Section 1.2 is about those two.
+
+<Figure n="1.1" caption="Three clients share one server through a hub. Tap a device, or press 1, 2 or 3, to send a request and watch the files come back.">
+  <ClientServerFigure />
+</Figure>
+
+The server keeps its files after it answers, because it only ever sends copies. That is how the next client gets the same page. A busy server answers many clients at the same time, the way one kitchen cooks for a full restaurant.
+
+## How a server finds a file
+
+<Note term="404 Not Found">The answer a server gives when it has no file for the address it was asked for.</Note>
+
+Each request names the file the client wants. The server checks whether it has a file by that name. If it does, it sends a copy back. If it does not, it still answers, with an error message. The most common one is 404 Not Found.<Cite n={2} />
+
+<Figure n="1.2" caption="Inside the server. Ask for a file and the picker runs to its card. A card there means a copy goes out. An empty slot means the answer is 404 Not Found.">
+  <ServerLookupFigure />
+</Figure>
+
+## Worth knowing
+
+- Most servers have no screen and stay switched on all day, so they can answer at any hour.<Cite n={2} />
+- Client and server are jobs, not kinds of machine. Later in this course you will run a small server on your own laptop, and the browser on that same laptop will be its client.
+
+## Exercises
+
+Answer from memory. Scrolling up first only makes it feel easier.
+
+<Quiz
+  lesson="chapter-01/client-and-server"
+  done="All five right. Section 1.1 is done."
+  questions={[
+    {
+      id: "who-is-client",
+      prompt: "You open a news site on your phone. Which one is the client?",
+      options: ["The newspaper’s server", "Your phone’s browser", "Your Wi-Fi router"],
+      answer: 1,
+      right: "Right. Your browser is doing the asking, so it is the client.",
+      wrong: "The client is whatever asks for the page. Here that is the browser on your phone.",
+    },
+    {
+      id: "what-server-does",
+      prompt: "What does a server do when a client asks for a page?",
+      options: ["Moves the files to the client", "Draws the page on your screen", "Sends a copy of the files"],
+      answer: 2,
+      right: "Right. It sends copies and keeps the originals, so it can serve the next client too.",
+      wrong: "The server sends copies of its files. Drawing the page is the browser’s job.",
+    },
+    {
+      id: "missing-file",
+      prompt: "A client asks for a file the server does not have. What comes back?",
+      options: ["A blank copy of the page", "An error that says not found", "The closest file it can find"],
+      answer: 1,
+      right: "Right. The server always answers, and here the answer is 404 Not Found.",
+      wrong: "The server always answers. When it has no such file, it sends an error: 404 Not Found.",
+    },
+    {
+      id: "always-on",
+      prompt: "Why do most servers stay switched on all day?",
+      options: ["So they can answer anytime", "So their screens stay bright", "So they can charge batteries"],
+      answer: 0,
+      right: "Right. A client can ask at any hour, so the server has to be ready.",
+      wrong: "Most servers have no screen at all. They stay on so they can answer whenever a client asks.",
+    },
+    {
+      id: "laptop-server",
+      prompt: "Can your laptop be a server?",
+      options: ["No, servers are always special machines", "Only when nobody is using it", "Yes, if it runs server software"],
+      answer: 2,
+      right: "Right. Server is a job. Any computer running server software can do it.",
+      wrong: "Server is a job. Your laptop can do it with the right software.",
+    },
+  ]}
+/>

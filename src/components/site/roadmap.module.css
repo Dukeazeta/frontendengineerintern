@@ -66,8 +66,13 @@
 }
 
 .title {
+  color: var(--ink);
   font-size: clamp(1.1875rem, 1.1rem + 0.35vw, 1.375rem);
   line-height: 1.25;
+}
+
+a.title:hover {
+  color: var(--ink-muted);
 }
 
 .chev {
@@ -126,6 +131,20 @@
   line-height: 1.3;
 }
 
+.lessonLink {
+  color: var(--signal);
+  font-size: 1.0625rem;
+  line-height: 1.3;
+  text-decoration: underline;
+  text-decoration-thickness: 0.5px;
+  text-decoration-color: color-mix(in srgb, var(--signal) 35%, transparent);
+  text-underline-offset: 0.2em;
+}
+
+.lessonLink:hover {
+  text-decoration-color: currentColor;
+}
+
 .note {
   margin: 0.75rem 0 0.5rem 3.25rem;
   color: var(--ink-muted);
@@ -143,7 +162,21 @@
   }
 
   .lessons,
-  .note {
+  .lessonLink {
+  color: var(--signal);
+  font-size: 1.0625rem;
+  line-height: 1.3;
+  text-decoration: underline;
+  text-decoration-thickness: 0.5px;
+  text-decoration-color: color-mix(in srgb, var(--signal) 35%, transparent);
+  text-underline-offset: 0.2em;
+}
+
+.lessonLink:hover {
+  text-decoration-color: currentColor;
+}
+
+.note {
     margin-left: 0;
   }
 

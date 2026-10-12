@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { levels } from "./course";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+import { levels, readyLessons } from "./course";
 
 describe("course map", () => {
   it("has 19 levels numbered in order", () => {
@@ -10,6 +12,12 @@ describe("course map", () => {
     for (const level of levels) {
       const slugs = level.lessons.map((lesson) => lesson.slug);
       expect(new Set(slugs).size).toBe(slugs.length);
+    }
+  });
+
+  it("has an MDX file for every ready lesson", () => {
+    for (const { level, lesson } of readyLessons()) {
+      expect(existsSync(join(__dirname, "lessons", level, `${lesson}.mdx`))).toBe(true);
     }
   });
 });
