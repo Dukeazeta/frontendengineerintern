@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FrontendEngineerIntern
 
-## Getting Started
+A free, open course that takes you from zero to frontend engineer, one small lesson at a time. It starts with how the web works and ends with what senior engineers think about.
 
-First, run the development server:
+Every lesson opens with a real-life comparison, explains one idea, shows it as an interactive figure, then checks what you remember.
+
+The course is being built level by level. Level 1 (Web fundamentals) is in progress.
+
+## Run it locally
+
+You need Node.js 22 or newer and pnpm.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
+cp .env.example .env.local   # then set BETTER_AUTH_SECRET
+pnpm db:migrate
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Sign-in is optional. To turn on Google or GitHub sign-in, add their client ID and secret to `.env.local`. The callback URLs are listed in `.env.example`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Scripts
 
-## Learn More
+| Command | What it does |
+|---|---|
+| `pnpm dev` | Start the dev server |
+| `pnpm build` | Production build |
+| `pnpm typecheck` | Check types |
+| `pnpm lint` | Lint |
+| `pnpm test` | Unit tests (Vitest) |
+| `pnpm test:e2e` | Browser tests (Playwright) |
+| `pnpm db:generate` | Create a migration from the schema |
+| `pnpm db:migrate` | Apply migrations |
 
-To learn more about Next.js, take a look at the following resources:
+## How it's built
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Next.js (App Router) and TypeScript
+- Turso (libSQL) with Drizzle ORM, for learner progress only
+- Better Auth with optional Google and GitHub sign-in
+- Lessons are MDX files in the repo, written and reviewed by hand
+- Lesson figures are made with the [anatomy](https://github.com/wheresryan22/anatomy) skill
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
+- Code: [MIT](LICENSE)
+- Lessons and figures: [CC BY-NC-SA 4.0](LICENSE-CONTENT.md)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Fonts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The typeface is PP Neue Montreal by [Pangram Pangram Foundry](https://pangrampangram.com). It's used in this project with permission. The font files in `public/fonts/` are not covered by this repository's licenses. Don't reuse them in your own projects without getting a license from the foundry.

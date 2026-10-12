@@ -1,0 +1,230 @@
+/* Landing page: centred, minimal, type a step larger than usual. Tokens come from globals.css. */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 2.125rem var(--gutter) 0;
+  font-size: 1rem;
+}
+
+.name {
+  color: var(--ink);
+}
+
+.links {
+  display: flex;
+  gap: clamp(1rem, 0.5rem + 2vw, 2rem);
+}
+
+.links a {
+  color: var(--ink);
+  transition: color 0.3s var(--ease-out);
+}
+
+.links a:hover {
+  color: var(--ink-muted);
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(2rem, 1rem + 2.5vw, 3.25rem) var(--gutter) clamp(3rem, 2rem + 4vw, 6rem);
+  text-align: center;
+}
+
+.heroTitle {
+  max-width: 12ch;
+  font-weight: inherit;
+  font-size: clamp(3rem, 1.8rem + 4.6vw, 5.25rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.heroLead {
+  max-width: 42ch;
+  margin-top: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  color: var(--ink-muted);
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem);
+  line-height: 1.35;
+  text-wrap: balance;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem 1.75rem;
+  margin-top: clamp(1.75rem, 1.25rem + 1.25vw, 2.25rem);
+  font-size: 1.0625rem;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  height: 3rem;
+  padding: 0 1.5rem;
+  border-radius: var(--radius-button);
+  background: rgba(12, 13, 15, 0.05);
+  color: var(--ink-strong);
+  transition: background-color 0.3s var(--ease-out);
+}
+
+.cta:hover {
+  background: rgba(12, 13, 15, 0.09);
+}
+
+.figure {
+  width: min(100%, 68rem, calc(100svh * 1.02));
+  margin-top: 0;
+}
+
+/* Sections */
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(5.5rem, 3.5rem + 7vw, 9.5rem) var(--gutter);
+  text-align: center;
+}
+
+.raised {
+  background: var(--surface);
+}
+
+.title {
+  font-weight: inherit;
+  font-size: clamp(2.25rem, 1.5rem + 3vw, 3.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.lead {
+  max-width: 32ch;
+  margin-top: 1.25rem;
+  color: var(--ink-muted);
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  line-height: 1.35;
+  text-wrap: balance;
+}
+
+/* Method */
+.steps {
+  width: min(100%, 38rem);
+  margin-top: clamp(3rem, 2rem + 3vw, 5rem);
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(1.5rem, 1.2rem + 1vw, 2.25rem) 0;
+  border-top: 0.5px solid var(--hairline-strong);
+}
+
+.step:last-child {
+  border-bottom: 0.5px solid var(--hairline-strong);
+}
+
+.stepNum {
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--radius-pill);
+  box-shadow: inset 0 0 0 0.5px var(--signal);
+  color: var(--signal);
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.stepTitle {
+  margin-top: 1rem;
+  font-weight: inherit;
+  font-size: clamp(1.5rem, 1.3rem + 0.8vw, 1.875rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.stepBody {
+  max-width: 34ch;
+  margin-top: 0.75rem;
+  color: var(--ink-muted);
+  font-size: 1.1875rem;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+.note {
+  margin-top: 2.25rem;
+  color: var(--ink-muted);
+  font-size: 1rem;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+  padding: clamp(4rem, 3rem + 3vw, 6rem) var(--gutter) 4.3rem;
+  border-top: 0.5px solid var(--hairline);
+  font-size: 1rem;
+  text-align: center;
+}
+
+.footerLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem 1.75rem;
+  font-size: 1.0625rem;
+}
+
+.github {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 2.75rem;
+  padding: 0 1.25rem 0 1rem;
+  border-radius: var(--radius-pill);
+  background: rgba(12, 13, 15, 0.05);
+  color: var(--ink-strong);
+  transition: background-color 0.3s var(--ease-out);
+}
+
+.github:hover {
+  background: rgba(12, 13, 15, 0.09);
+}
+
+.github svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  fill: #181717;
+}
+
+.footerLine {
+  color: var(--ink-muted);
+  font-size: var(--text-meta);
+}
+
+.footerLine a {
+  white-space: nowrap;
+}
+
+@media (max-width: 30rem) {
+  .links a:first-child {
+    display: none;
+  }
+}

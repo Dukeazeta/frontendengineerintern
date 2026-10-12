@@ -32,6 +32,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +40,22 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local database
+local.db*
+
+# playwright
+/test-results/
+/playwright-report/
+
+# impeccable working files
+.impeccable/review/
+.impeccable/questions/
+.impeccable/hook.cache.json
+
+# figure build output and review shots
+figures/hero/shots/
+figures/hero/out/
+
+# local agent settings
+.claude/settings.local.json

@@ -1,69 +1,113 @@
-import Image from "next/image";
+import { HeroFigure } from "@/components/figures/hero/hero-figure";
+import { Reveal } from "@/components/site/reveal";
+import { Roadmap } from "@/components/site/roadmap";
+import styles from "./landing.module.css";
+
+const REPO = "https://github.com/Dukeazeta/frontendengineerintern";
+
+const METHOD = [
+  {
+    title: "Real life first",
+    body: "Each new idea starts with something you already know, like a waiter carrying orders between your table and the kitchen. The technical word comes after.",
+  },
+  {
+    title: "One idea per lesson",
+    body: "A lesson teaches one thing, and by the end of it you can do something you couldn’t before.",
+  },
+  {
+    title: "See it working",
+    body: "An interactive figure shows the idea as a machine you can switch on and try.",
+  },
+  {
+    title: "Remember it",
+    body: "You answer short quizzes from memory, and the course brings questions back later so they stick.",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <>
+      <header className={styles.header}>
+        <a href="#top" className={styles.name}>
+          FrontendEngineerIntern
+        </a>
+        <nav aria-label="Main" className={styles.links}>
+          <a href="#method">How a lesson works</a>
+          <a href="#roadmap">Roadmap</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section className={styles.hero} aria-labelledby="hero-title">
+          <Reveal as="h1" id="hero-title" className={styles.heroTitle} text="From zero to frontend engineer." />
+          <Reveal
+            className={styles.heroLead}
+            delay={120}
+            text="A free course that starts at your first web page and goes all the way to how senior engineers think, one small lesson at a time."
+          />
+          <div className={styles.actions}>
+            <a href="#roadmap" className={styles.cta}>
+              See the roadmap
+            </a>
+            <a href="#method" className="text-link">
+              How a lesson works
+            </a>
+          </div>
+          <div className={styles.figure}>
+            <HeroFigure />
+          </div>
+        </section>
+
+        <section id="method" className={`${styles.section} ${styles.raised}`} aria-labelledby="method-title">
+          <Reveal as="h2" id="method-title" className={styles.title} text="How a lesson works" />
+          <Reveal className={styles.lead} text="Every lesson follows the same four steps." />
+          <ol className={styles.steps}>
+            {METHOD.map((step, i) => (
+              <li key={step.title} className={styles.step}>
+                <span className={styles.stepNum}>{i + 1}</span>
+                <h3 className={styles.stepTitle}>{step.title}</h3>
+                <p className={styles.stepBody}>{step.body}</p>
+              </li>
+            ))}
+          </ol>
+          <p className={styles.note}>No coding experience needed. Lessons link to their sources, mostly MDN.</p>
+        </section>
+
+        <section id="roadmap" className={styles.section} aria-labelledby="roadmap-title">
+          <Reveal as="h2" id="roadmap-title" className={styles.title} text="The roadmap" />
+          <Reveal
+            className={styles.lead}
+            text="Nineteen levels, from how the web works to how senior engineers think."
+          />
+          <Roadmap />
+        </section>
+
       </main>
-    </div>
+
+      <footer className={styles.footer}>
+        <div className={styles.footerLinks}>
+          <a href={REPO} className={styles.github} target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57l-.02-2.04c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.31-5.47-1.34-5.47-5.94 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22l-.01 3.29c0 .31.21.69.82.57A12 12 0 0 0 12 .3" />
+            </svg>
+            Star on GitHub
+          </a>
+          <a href="https://dukedev.space" className="text-link" target="_blank" rel="noopener noreferrer">
+            Built by Duke Azeta
+          </a>
+        </div>
+        <p className={styles.footerLine}>
+          Open source. Code under{" "}
+          <a href={`${REPO}/blob/main/LICENSE`} className="text-link">
+            MIT
+          </a>
+          , lessons under{" "}
+          <a href={`${REPO}/blob/main/LICENSE-CONTENT.md`} className="text-link">
+            CC BY-NC-SA 4.0
+          </a>
+          .
+        </p>
+      </footer>
+    </>
   );
 }

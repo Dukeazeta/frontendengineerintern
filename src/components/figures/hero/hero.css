@@ -1,0 +1,145 @@
+/* Fig 0 tokens. The kit's light theme, cooled to the course canvas. */
+.iso[data-theme="light"].fe-figure,
+.fe-figure .iso[data-theme="light"],
+.fe-figure.iso[data-theme="light"] {
+  --anatomy-page: #f2f2f4;
+  --anatomy-card: #f2f2f4;
+  --anatomy-paper: #f2f2f4;
+  --anatomy-face: #fdfdfd;
+  --anatomy-top: #fdfdfd;
+  --anatomy-shade-0: #d9d9de;
+  --anatomy-shade-1: #e2e2e6;
+  --anatomy-shade-2: #eaeaee;
+  --anatomy-shade-3: #f2f2f5;
+  --anatomy-lit-top: #ffffff;
+  --anatomy-lit-shade: #ececf0;
+  --anatomy-hi: #1d1e22;
+  --anatomy-mid: #85868c;
+  --anatomy-lo: #b1b2b8;
+  --anatomy-faint: #d2d3d8;
+  --anatomy-halo: #7f8088;
+  --anatomy-dot: #36373c;
+  --anatomy-text: #5e5e5e;
+  --anatomy-strong: #0f1012;
+  --anatomy-muted: #6b6b6b;
+  --anatomy-mono: "PP Neue Montreal", "Inter", system-ui, sans-serif;
+  --fe-signal: #0071e3;
+  --fe-ink: #0f1012;
+}
+
+.fe-well { fill: var(--anatomy-shade-1); }
+.fe-bezel { fill: var(--anatomy-hi); }
+.fe-glass { fill: #fdfdfd; }
+.fe-chrome { fill: var(--anatomy-shade-3); }
+.fe-dot { fill: var(--anatomy-lo); }
+.fe-address { fill: #fdfdfd; stroke: var(--anatomy-faint); stroke-width: 0.5px; vector-effect: non-scaling-stroke; }
+.fe-url { fill: var(--anatomy-mid); font-family: var(--anatomy-mono); }
+.fe-page { fill: #fdfdfd; }
+.fe-text { fill: var(--fe-ink); }
+.fe-rule { stroke: var(--anatomy-faint); stroke-width: 0.5px; vector-effect: non-scaling-stroke; }
+.fe-box,
+.fe-button,
+.fe-toast {
+  vector-effect: non-scaling-stroke;
+  stroke-width: 0.6px;
+}
+.fe-box {
+  fill: var(--anatomy-shade-1);
+  fill-opacity: var(--fe-css, 1);
+  stroke: var(--anatomy-mid);
+  stroke-opacity: calc(1 - var(--fe-css, 1));
+}
+.fe-art { fill: var(--anatomy-shade-0); }
+.fe-art circle { fill: #fdfdfd; }
+.fe-cross { fill: none; stroke: var(--anatomy-lo); stroke-width: 0.5px; vector-effect: non-scaling-stroke; }
+.fe-button {
+  fill: var(--fe-ink);
+  fill-opacity: var(--fe-css, 1);
+  stroke: var(--fe-ink);
+  transition: fill 0.3s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-live] > .fe-button { fill: var(--fe-signal); stroke: var(--fe-signal); }
+.fe-label { fill: #fdfdfd; }
+[data-el="button"]:not([data-live]) .fe-label { fill: color-mix(in srgb, #fdfdfd calc(var(--fe-css, 1) * 100%), var(--fe-ink)); }
+[data-el="button"] { transform-box: fill-box; }
+[data-live] { cursor: pointer; }
+.fe-toast {
+  fill: #fdfdfd;
+  stroke: color-mix(in srgb, var(--anatomy-faint) calc(var(--fe-css, 1) * 100%), var(--anatomy-mid));
+}
+.fe-toast-text { fill: var(--fe-ink); font-family: var(--anatomy-mono); }
+.fe-cursor { fill: var(--fe-ink); stroke: #fdfdfd; stroke-width: 0.6px; vector-effect: non-scaling-stroke; pointer-events: none; }
+.fe-empty { fill: var(--anatomy-mid); font-family: var(--anatomy-mono); }
+.fe-cord { stroke-width: 1.2px; }
+.fe-led .iso-top { fill: var(--anatomy-hi); transition: fill 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+.fe-led[data-off] .iso-top { fill: var(--anatomy-shade-0); }
+.fe-switch { cursor: pointer; }
+.fe-switch:hover .iso-edge { stroke: var(--anatomy-strong); }
+.iso-stage.fe-hero { touch-action: pan-y; }
+.iso-stage.fe-hero:focus { outline: none; }
+.iso-stage.fe-hero:focus-visible { outline: 1px solid var(--fe-signal); outline-offset: 6px; }
+
+/* On the landing page the card dissolves into the canvas: no frame, quiet corners. */
+.fe-figure .iso-plate.fe-plate {
+  background: transparent;
+  box-shadow: none;
+  padding: 14px 8px 30px;
+  overflow: clip;
+}
+.fe-figure .iso-plate-corners { inset: 0 8px 4px; }
+.fe-hit { fill: transparent; }
+.fe-figure .iso-svg text { pointer-events: none; }
+
+/* The same three switches as real buttons under the figure: easy to tap and named. */
+.fe-switches {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+.fe-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0 1.125rem 0 0.875rem;
+  border: 0;
+  border-radius: 9999px;
+  background: transparent;
+  box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.12);
+  color: #5e5e5e;
+  font: inherit;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fe-toggle[aria-pressed="true"] {
+  box-shadow: inset 0 0 0 0.5px var(--fe-signal);
+  color: var(--fe-ink);
+}
+.fe-toggle-dot {
+  width: 0.4375rem;
+  height: 0.4375rem;
+  border-radius: 9999px;
+  box-shadow: inset 0 0 0 0.5px currentColor;
+  transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fe-toggle[aria-pressed="true"] .fe-toggle-dot { background: var(--fe-ink); box-shadow: none; }
+.fe-toggle:focus-visible { outline: 1px solid var(--fe-signal); outline-offset: 3px; }
+
+@media (max-width: 40rem) {
+  .fe-figure .iso-svg { width: 122%; margin-left: -11%; }
+  .fe-figure .iso-plate-corner[data-corner="title"] { display: none; }
+}
+.fe-figure .iso-plate-corner {
+  font-size: 0.6875rem;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+.fe-figure .iso-plate-corner[data-corner="readout"] { color: var(--anatomy-strong); }
+.fe-figure .iso-plate-corner { color: var(--anatomy-muted); }
+@media (prefers-reduced-motion: no-preference) {
+  .fe-figure .iso-svg { animation: fe-focus 1.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  @keyframes fe-focus { from { filter: blur(18px); opacity: 0; transform: scale(0.985); } }
+}

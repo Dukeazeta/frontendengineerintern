@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendored anatomy kit and generated figure output.
+    "figures/kit/**",
+    "figures/hero/out/**",
+    "src/components/figures/**/art.generated.ts",
   ]),
 ]);
 
