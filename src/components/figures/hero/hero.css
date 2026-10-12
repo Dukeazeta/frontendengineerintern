@@ -89,6 +89,8 @@
 .fe-figure .iso-plate-corners { inset: 0 8px 4px; }
 .fe-hit { fill: transparent; }
 .fe-figure .iso-svg text { pointer-events: none; }
+.fe-figure .iso-svg,
+.fe-toggle { -webkit-user-select: none; user-select: none; }
 
 /* The same three switches as real buttons under the figure: easy to tap and named. */
 .fe-switches {
@@ -115,7 +117,7 @@
   transition: box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .fe-toggle[aria-pressed="true"] {
-  box-shadow: inset 0 0 0 0.5px var(--fe-signal);
+  box-shadow: inset 0 0 0 0.5px var(--fe-ink);
   color: var(--fe-ink);
 }
 .fe-toggle-dot {

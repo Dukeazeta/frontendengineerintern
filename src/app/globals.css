@@ -91,6 +91,14 @@ body {
   color: var(--surface);
 }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
 :focus-visible {
   outline: 1px solid var(--signal);
   outline-offset: 3px;
